@@ -1,7 +1,7 @@
 /*
  * @Author: Quinn
  * @Date: 2020-12-01 17:17:51
- * @LastEditTime: 2021-03-29 17:19:17
+ * @LastEditTime: 2021-03-30 09:50:49
  * @LastEditors: quinn
  * @Description:  webpack开发、生产 构建配置
  */
@@ -15,6 +15,7 @@ module.exports = {
         index: path.resolve(__dirname, '../dist/index.html'),
         assetsPublicPath: '/',
         assetsSubDirectory: '',
+        // 开发环境 eval, eval-source-map, cheap-eval-source-map, cheap-module-eval-source-map, cheap-module-source-map
         devtool: 'eval',
     },
     build: {
@@ -23,7 +24,8 @@ module.exports = {
         // 静态资源存放路径 js css img ...
         assetsSubDirectory: '',
         assetsRoot: path.resolve(__dirname, '../dist'),
-        devtool: 'source-map'
+        // 生产环境 source-map hidden-source-map nosources-source-map
+        devtool: '',
     },
     assetsPath: function (_path = '') {
         // 静态资源存放的 根目录
