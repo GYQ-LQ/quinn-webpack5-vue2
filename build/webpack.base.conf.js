@@ -1,7 +1,7 @@
 /*
  * @Author: Quinn
  * @Date: 2021-03-26 14:46:50
- * @LastEditTime: 2021-03-29 17:03:43
+ * @LastEditTime: 2021-03-29 21:52:40
  * @LastEditors: quinn
  * @Description:  
  */
@@ -54,7 +54,7 @@ module.exports = {
     entry: {
         bundle: ['./src/main.js']
     },
-    // 配置模块如何解析
+    // 配置别名加快 webpack 查找模块的速度
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         symlinks: false,
@@ -94,6 +94,7 @@ module.exports = {
                 ),
                 loader: 'babel-loader',
                 options: {
+                    // babel缓存
                     cacheDirectory: true
                 }
             },
@@ -144,31 +145,46 @@ module.exports = {
                 test: LessModuleTest,
                 use: [...BaseCssModuleUse, 'less-loader']
             },
+            // 加载 images 图像 
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/i,
-                loader: 'url-loader',
-                options: {
-                    esModule: false,
-                    limit: 8 * 1024,
-                    name: config.assetsPath('img/[name].[hash:8].[ext]')
+                // asset 在导出一个 data URI 和发送一个单独的文件之间自动选择。之前通过使用 url-loader，并且配置资源体积限制实现。
+                // https://webpack.docschina.org/guides/asset-modules/
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        // 4kb以下的使用base64形式
+                        maxSize: 4 * 1024
+                    }
+                },
+                generator: {
+                    filename: config.assetsPath('img/[name].[hash:8].[ext]')
                 }
             },
+            // 加载 video 视频
             {
-                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    esModule: false,
-                    limit: 8 * 1024,
-                    name: config.assetsPath('media/[name].[hash:8].[ext]')
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/i,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 4 * 1024
+                    }
+                },
+                generator: {
+                    filename: config.assetsPath('media/[name].[hash:8].[ext]')
                 }
             },
+            // 加载 fonts 字体
             {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    esModule: false,
-                    limit: 8 * 1024,
-                    name: config.assetsPath('fonts/[name].[hash:8].[ext]')
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 4 * 1024
+                    }
+                },
+                generator: {
+                    filename: config.assetsPath('fonts/[name].[hash:8].[ext]')
                 }
             }
         ]

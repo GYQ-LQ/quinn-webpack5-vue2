@@ -1,7 +1,7 @@
 /*
  * @Author: Quinn
  * @Date: 2020-12-01 17:17:51
- * @LastEditTime: 2021-03-29 15:46:11
+ * @LastEditTime: 2021-03-29 17:19:17
  * @LastEditors: quinn
  * @Description:  webpack开发、生产 构建配置
  */
@@ -12,16 +12,17 @@ const PROD = process.env.NODE_ENV === 'production'
 
 module.exports = {
     dev: {
-        assetsSubDirectory: 'static',
-        assetsPublicPath: '/',
-        devtool: 'eval',
         index: path.resolve(__dirname, '../dist/index.html'),
+        assetsPublicPath: '/',
+        assetsSubDirectory: '',
+        devtool: 'eval',
     },
     build: {
         index: path.resolve(__dirname, '../dist/index.html'),
-        assetsRoot: path.resolve(__dirname, '../dist'),
-        assetsSubDirectory: 'static',
         assetsPublicPath: '../dist/',
+        // 静态资源存放路径 js css img ...
+        assetsSubDirectory: '',
+        assetsRoot: path.resolve(__dirname, '../dist'),
         devtool: 'source-map'
     },
     assetsPath: function (_path = '') {

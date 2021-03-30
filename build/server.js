@@ -1,7 +1,7 @@
 /*
  * @Author: Quinn
  * @Date: 2020-12-08 16:24:42
- * @LastEditTime: 2021-03-26 20:36:56
+ * @LastEditTime: 2021-03-30 08:52:02
  * @LastEditors: quinn
  * @Description: 热模块替换 - 页面局部更新 推荐
  */
@@ -40,7 +40,6 @@ app.use(devMidWare);
 devMidWare.waitUntilValid(() => {
     spinner.stop()
     // 浏览器自动打开
-    // opn(`http://${HOST}:${PORT}`)
     opn(`http://${HOST}:${PORT}`)
     console.log('Your application is running at here: http://%s:%s', HOST, PORT);
 });
