@@ -1,3 +1,10 @@
+/*
+ * @Author: Quinn
+ * @Date: 2021-03-26 14:41:20
+ * @LastEditTime: 2021-03-30 11:48:38
+ * @LastEditors: quinn
+ * @Description:  
+ */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
@@ -7,7 +14,7 @@ Vue.use(VueRouter);
 const routes = [{
     path: '/',
     name: 'Index',
-    redirect: '/about',
+    redirect: '/home',
   },
   {
     path: '/home',
@@ -20,9 +27,9 @@ const routes = [{
     component: () => import('@/components/TimeLine'),
   },
   {
-    path: '/myindex',
-    name: 'myindex',
-    component: () => import('@/views/pages/myindex'),
+    path: '/quinn',
+    name: 'quinn',
+    component: () => import('@/views/pages/quinn'),
   },
   {
     path: '/about',

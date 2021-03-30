@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-09-20 11:07:14
  * @LastEditors: quinn
- * @LastEditTime: 2021-03-26 20:41:09
+ * @LastEditTime: 2021-03-30 11:53:31
  * @Description: test 测试环境变量
  */
 
@@ -14,5 +14,5 @@ module.exports = {
     // env_config
     ENV_CONFIG: '"test"',
     // 接口路径
-    BASE_API: '"https://localhost:8001/test-api"',
+    BASE_API: '"https://example.com/test-api"',
 }

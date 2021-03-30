@@ -1,7 +1,7 @@
 /*
  * @Author: Quinn
  * @Date: 2021-03-26 14:46:50
- * @LastEditTime: 2021-03-29 21:52:40
+ * @LastEditTime: 2021-03-30 11:38:31
  * @LastEditors: quinn
  * @Description:  
  */
@@ -14,8 +14,6 @@ const config = require('./config');
 
 // 是否为构建生产
 const PROD = process.env.NODE_ENV === 'production'
-console.log('构建环境：', PROD ? '生产环境' : '开发环境');
-
 
 const CssTest = /\.(sa|c)ss$/
 const StyTest = /\.styl(us)?$/

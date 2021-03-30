@@ -1,8 +1,15 @@
+<!--
+ * @Author: Quinn
+ * @Date: 2021-03-26 14:41:20
+ * @LastEditTime: 2021-03-30 11:51:06
+ * @LastEditors: quinn
+ * @Description:  
+-->
 <template>
   <div id="app">
     <div id="nav">
       <router-link to="/home">Home</router-link> |
-      <router-link to="/myindex">myindex</router-link>|
+      <router-link to="/quinn">Quinn</router-link>|
       <router-link to="/errortimeline">ErrorTimeLine</router-link> |
       <router-link to="/about">About</router-link>
     </div>
