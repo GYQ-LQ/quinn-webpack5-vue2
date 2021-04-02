@@ -1,7 +1,7 @@
 /*
  * @Author: Quinn
  * @Date: 2021-01-15 14:03:18
- * @LastEditTime: 2021-03-29 17:59:30
+ * @LastEditTime: 2021-03-31 10:24:20
  * @LastEditors: quinn
  * @Description:
  */
@@ -13,6 +13,9 @@ const {
 const {
     merge
 } = require('webpack-merge')
+const {
+    WebpackManifestPlugin
+} = require('webpack-manifest-plugin');
 
 const config = require('./config');
 
@@ -37,5 +40,6 @@ module.exports = merge(require('./webpack.base.conf'), {
                 useShortDoctype: true
             },
         }),
+        new WebpackManifestPlugin()
     ],
 })

@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "Quartz";
+    src: url("./font/quartz_regular.ttf");
+}
+
+.hello {
+    font-family: 'Quartz';
+    color: red;
+    /* background: url('./icon.jpg'); */
+}

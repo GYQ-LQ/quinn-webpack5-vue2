@@ -1,7 +1,7 @@
 /*
  * @Author: Quinn
  * @Date: 2021-03-26 14:46:50
- * @LastEditTime: 2021-03-30 11:38:31
+ * @LastEditTime: 2021-03-31 10:06:13
  * @LastEditors: quinn
  * @Description:  
  */
@@ -71,7 +71,7 @@ module.exports = {
         // 此选项决定了非入口(non-entry) chunk 文件的名称 配置按需加载文件
         chunkFilename: config.assetsPath('js/[id].chunk.[chunkhash:8].js'),
         // 公共路径(publicPath)
-        publicPath: PROD ? config.build.assetsPublicPath : config.dev.assetsPublicPath
+        publicPath: PROD ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
     },
     // loader 打包资源
     module: {
@@ -146,18 +146,51 @@ module.exports = {
             // 加载 images 图像 
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/i,
+                use: [{
+                        loader: 'url-loader',
+                        options: {
+                            esModule: false,
+                            limit: 8 * 1024,
+                            name: config.assetsPath('img/[name].[hash:8].[ext]')
+                        },
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65,
+                            },
+                            // optipng.enabled: false will disable optipng
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.9],
+                                speed: 4,
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            // the webp option will enable WEBP
+                            webp: {
+                                quality: 75,
+                            },
+                        },
+                    },
+                ],
                 // asset 在导出一个 data URI 和发送一个单独的文件之间自动选择。之前通过使用 url-loader，并且配置资源体积限制实现。
                 // https://webpack.docschina.org/guides/asset-modules/
-                type: 'asset',
-                parser: {
-                    dataUrlCondition: {
-                        // 4kb以下的使用base64形式
-                        maxSize: 4 * 1024
-                    }
-                },
-                generator: {
-                    filename: config.assetsPath('img/[name].[hash:8].[ext]')
-                }
+                // type: 'asset',
+                // parser: {
+                //     dataUrlCondition: {
+                //         // 4kb以下的使用base64形式
+                //         maxSize: 4 * 1024
+                //     }
+                // },
+                // generator: {
+                //     filename: config.assetsPath('img/[name].[hash:8].[ext]')
+                // }
             },
             // 加载 video 视频
             {

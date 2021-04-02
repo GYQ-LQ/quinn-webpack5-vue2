@@ -1,7 +1,7 @@
 {
-  "name": "quinn-webpack5-vue",
+  "name": "quinn-webpack5-vue2",
   "version": "1.0.0",
-  "description": "webpack5的vue打包框架模版",
+  "description": "webpack5的vue2打包框架模版",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -12,13 +12,14 @@
     "vue2"
   ],
   "bugs": {
-    "url": "https://github.com/GYQ-LQ/quinn-webpack5-vue/issues"
+    "url": "https://github.com/GYQ-LQ/quinn-webpack5-vue2/issues"
   },
-  "homepage": "https://github.com/GYQ-LQ/quinn-webpack5-vue#readme",
+  "homepage": "https://github.com/GYQ-LQ/quinn-webpack5-vue2#readme",
   "author": "quinn",
   "license": "MIT",
   "scripts": {
     "server": "node build/server.js",
+    "quinn": "cross-env NODE_ENV=production env_config=dev webpack --progress --config build/webpack.prod.conf.js",
     "build": "cross-env NODE_ENV=production env_config=dev node build/index.js",
     "build:dev": "cross-env NODE_ENV=production env_config=dev node build/index.js",
     "build:test": "cross-env NODE_ENV=production env_config=test node build/index.js",
@@ -44,6 +45,8 @@
     "express": "^4.17.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "image-webpack-loader": "^7.0.1",
+    "less": "^4.1.1",
     "less-loader": "^8.0.0",
     "mini-css-extract-plugin": "^1.4.0",
     "node-sass": "^5.0.0",
@@ -55,6 +58,7 @@
     "sass-loader": "^11.0.1",
     "sass-resources-loader": "^2.1.1",
     "style-loader": "^2.0.0",
+    "stylus": "^0.54.8",
     "stylus-loader": "^5.0.0",
     "ts-loader": "^8.0.18",
     "url-loader": "^4.1.1",
@@ -65,6 +69,7 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^4.1.0",
     "webpack-hot-middleware": "^2.25.0",
+    "webpack-manifest-plugin": "^3.1.0",
     "webpack-merge": "^5.7.3"
   }
 }
